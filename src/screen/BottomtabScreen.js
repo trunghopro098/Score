@@ -4,8 +4,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import { dataButton } from '../../util/data'
 import background1 from '../public/img/background3.jpg'
 export default function BottomtabScreen({navigation}) {
-
-
     const history = ()=>{
         navigation.navigate('history');
     }
@@ -34,17 +32,20 @@ export default function BottomtabScreen({navigation}) {
         </Text>
 
         <View style={styles.body}>
-            {dataButton.map((item,index)=>{
-                return(
-                <TouchableOpacity style={styles.btn1} key={item.id} onPress={()=>{columnScore(item.number)}}>
+                <TouchableOpacity style={styles.btn1}onPress={()=>{navigation.navigate('scores')}}>
                     <LinearGradient colors={["#ccccff","#cc99ff","#8080ff"]} style={styles.layoutBTN}>
                         <Text style={styles.textButton}>
-                            {item.number} column scores
+                            add scores
                         </Text>
                     </LinearGradient>
                 </TouchableOpacity>
-                )
-            })}
+                <TouchableOpacity style={styles.btn1} onPress={()=>{navigation.navigate('tutorial')}}>
+                    <LinearGradient colors={["#ccccff","#cc99ff","#8080ff"]} style={styles.layoutBTN}>
+                        <Text style={styles.textButton}>
+                            tutorial
+                        </Text>
+                    </LinearGradient>
+                </TouchableOpacity>
             <TouchableOpacity style={styles.btn1} onPress={history}>
                 <LinearGradient colors={["#ccccff","#cc99ff","#8080ff"]} style={styles.layoutBTN}>
                     <Text style={styles.textButton}>

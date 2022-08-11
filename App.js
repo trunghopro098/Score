@@ -7,6 +7,7 @@ import SplashScreen from './src/startScreen/splash';
 import BottomtabScreen from './src/screen/BottomtabScreen';
 import ScoreDetail from './src/screen/ScoreDetail';
 import Historyscore from './src/screen/historyscore';
+import Tutorial from './src/screen/tutorial';
 
 
 const Tab = createStackNavigator();
@@ -25,8 +26,9 @@ const App = () =>{
       >
         <Tab.Screen name='splash' component={SplashScreen}/>
         <Tab.Screen name='home' component={BottomtabScreen}/>
+        <Tab.Screen name='tutorial' component={Tutorial} options={{headerShown:true,headerTitle:"Tutorial"}}/>
         <Tab.Screen name='scores' component={ScoreDetail} options={{headerShown:true,headerTitle:"Score"}}/>
-        <Tab.Screen name='history' component={Historyscore}/>
+        <Tab.Screen name='history' component={Historyscore} options={{headerShown:true,headerTitle:"Scoreboard history"}}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
