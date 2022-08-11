@@ -9,7 +9,7 @@ export default function SplashScreen({navigation}){
         Animated.timing(fadeAnim,{
             duration : 2000,
             toValue : 1,
-            delay  :2000,
+            delay  :1000,
             useNativeDriver : false
         }).start()
         Animated.sequence([
@@ -41,11 +41,11 @@ export default function SplashScreen({navigation}){
                 >
                     <View style={styles.contentContainer}>
                         <Animated.Image  source={require("../public/img/logo.png")}
-                         style={{ width : windowW*0.65 , height: windowH*0.5 , opacity : fadeAnim}} resizeMode="contain">
+                         style={{ width : windowW*0.65 , height: windowH*0.5, marginBottom:20 , opacity : fadeAnim,borderRadius: 150,overflow: "hidden",}} resizeMode="contain">
                          </Animated.Image>
                     </View>
                     <Animated.View style={{...styles.logoContainer,alignItems:"center", marginLeft : moveAnim}}>
-                        <Text style={{ ...styles.logoText,fontSize : 25}}> SCORES</Text>
+                        <Text style={{ ...styles.logoText,fontSize : 20}}> NOTE SCORES</Text>
                         <Animated.Text style={{...styles.logoText,color : "#295A8A", opacity : fadeAnim, paddingTop : 4}}> CLEAR AND PRECISE</Animated.Text>
                     </Animated.View>
                 </View>
@@ -65,16 +65,13 @@ const styles = StyleSheet.create({
     },
     contentContainer:{
         alignItems : "center",
+        flexDirection:'column'
     },
 
     logoText:{
         fontSize : 18,
         fontWeight: "bold",
         color : "red",
-        
-        
-        
-        
     },
     logoContainer : {
         flexDirection:"row"

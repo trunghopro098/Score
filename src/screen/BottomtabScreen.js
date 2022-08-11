@@ -1,7 +1,8 @@
-import { View, Text, SafeAreaView, StatusBar, StyleSheet, Image, Button, TouchableOpacity } from 'react-native'
+import { View, Text, ImageBackground, StatusBar, StyleSheet, Image, Button, TouchableOpacity } from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { dataButton } from '../../util/data'
+import background1 from '../public/img/background3.jpg'
 export default function BottomtabScreen({navigation}) {
 
 
@@ -13,24 +14,23 @@ export default function BottomtabScreen({navigation}) {
         console.log("number",number)
     }
   return (
-    <SafeAreaView style={styles.container}>
+    <ImageBackground
+        source={background1}
+        style={styles.container}>
         <StatusBar 
             backgroundColor="#e6ccff"
             barStyle="dark-content"
         />
-        <LinearGradient colors={["#e6ccff","#cc99ff","#6600cc"]}
-        style={styles.linear}
+        <View
+            style={{
+            flex:1,
+            backgroundColor: 'rgba(0,0,0, .7)',
+            alignItems:'center',
+            paddingHorizontal: 20
+            }}
         >
-        {/* <View style={styles.header}>
-            <Image
-                source={require("../public/img/logo.png")}
-                resizeMode="contain"
-                style={{width: 50, height: 50}}
-            />
-            <Text style={{fontSize: 17, fontWeight:'bold', color: "red"}}>SCORES</Text>
-        </View> */}
-        <Text style={{marginTop: 60, fontSize:20, color:' #9900cc', fontWeight:'bold'}}>
-            CHOOSE SCORES CARD
+        <Text style={{marginTop: 100,marginBottom:20, fontSize:30, color:'white', fontWeight:'bold',fontStyle:'italic'}}>
+            NOTE SCORES HAPPY
         </Text>
 
         <View style={styles.body}>
@@ -53,19 +53,15 @@ export default function BottomtabScreen({navigation}) {
                 </LinearGradient>
             </TouchableOpacity>
         </View> 
-        </LinearGradient>
+        </View>
 
-    </SafeAreaView>
+    </ImageBackground>
   )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection:'column',
-        justifyContent:'center',
-        alignItems:'center',
-        
+        flex: 1
     },
     linear:{
         flex:1,
@@ -88,14 +84,12 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 3,
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
     },
     body:{
         width: "80%",
         height: "70%",
         backgroundColor:'transparent',
-        borderWidth: 2,
-        borderColor:'red',
         marginTop:10,
         flexDirection:'column',
         justifyContent:'space-around',
@@ -103,8 +97,9 @@ const styles = StyleSheet.create({
     },
     btn1:{
         width: "80%",
-        height: 40,
-        borderRadius: 20,
+        height: 60,
+        borderRadius: 25,
+        overflow:'hidden'
     },
     layoutBTN:{
         width: "100%",
@@ -113,7 +108,7 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     textButton:{
-        fontSize: 16,
+        fontSize: 18,
         fontWeight:'bold',
         color:'white'
     }

@@ -1,7 +1,7 @@
-import { View, Text, StatusBar, SafeAreaView, StyleSheet, Dimensions, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, StatusBar, SafeAreaView, StyleSheet, Dimensions, TextInput, TouchableOpacity, ScrollView, Button } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
-export default function ScoreDetail({route,navgation}) {
+export default function ScoreDetail({route,navigation}) {
   const {number} = route.params;
   const [count, setcount] = useState(0)
   const [name, setname] = useState('')
@@ -19,6 +19,19 @@ export default function ScoreDetail({route,navgation}) {
       }, 500);
     }
   }, [count])
+  useEffect(()=>{
+    navigation.setOptions({
+      headerLeft: () => (
+        <Button
+          onPress={() => {
+            navigation.goBack();
+          }}
+          title="Back"
+        />
+      ),
+      headerRight:null
+    });
+  })
   
     const handleAddName = () =>{
       const valiName = [];
@@ -64,10 +77,6 @@ export default function ScoreDetail({route,navgation}) {
             backgroundColor="white"
             barStyle="dark-content"
         />
-      <View style={styles.header}>
-        <Text>header</Text>
-        <Text onPress={()=>{handleshowAdd()}}>header</Text>
-      </View>
       <View style={{
             width:windowW,
             flexDirection:'row',

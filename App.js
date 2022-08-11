@@ -25,7 +25,7 @@ const App = () =>{
       >
         <Tab.Screen name='splash' component={SplashScreen}/>
         <Tab.Screen name='home' component={BottomtabScreen}/>
-        <Tab.Screen name='scores' component={ScoreDetail}/>
+        <Tab.Screen name='scores' component={ScoreDetail} options={{headerShown:true,headerTitle:"Score"}}/>
         <Tab.Screen name='history' component={Historyscore}/>
       </Tab.Navigator>
     </NavigationContainer>
