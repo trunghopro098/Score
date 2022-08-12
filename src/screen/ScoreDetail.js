@@ -183,7 +183,7 @@ export default function ScoreDetail({route,navigation}) {
             flexDirection:'row',
             justifyContent:'space-around',
             alignItems:'center',
-            borderBottomWidth:1,
+            // borderBottomWidth:1,
             marginTop: 5
             
             }}>
@@ -218,13 +218,15 @@ export default function ScoreDetail({route,navigation}) {
             )
           })}
         </ScrollView>
-        <View style={{height: 45, width: windowW, backgroundColor:'#e6eaf0', bottom:0, flexDirection:'row', alignItems:'center', justifyContent:'space-around'}}>
-            <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>Total : </Text>
-            <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>{total1} </Text>
-            <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>{total2} </Text>
-            <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>{total3} </Text>
-            <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>{total4} </Text>
-        </View>
+          {listName.length == 4 && 
+                    <View style={{height: 45, width: windowW, backgroundColor:'#e6eaf0', bottom:0, flexDirection:'row', alignItems:'center', justifyContent:'space-around'}}>
+                    <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>Total : </Text>
+                    <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>{total1} </Text>
+                    <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>{total2} </Text>
+                    <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>{total3} </Text>
+                    <Text style={{color: "red", fontWeight: 'bold', fontSize: 18}}>{total4} </Text>
+                </View>
+          }
      {showAddScore ?
      <View style={styles.addScore}>
       <Text style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>Add Score</Text>
