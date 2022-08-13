@@ -9,7 +9,6 @@ export default function BottomtabScreen({navigation}) {
     }
     const columnScore = (number) => {
         navigation.navigate('scores', {number: number})
-        console.log("number",number)
     }
   return (
     <ImageBackground

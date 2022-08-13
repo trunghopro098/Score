@@ -9,6 +9,7 @@ export default function Historyscore({navigation}) {
           headerLeft: () => (
             <Button
               onPress={() => {
+
                 navigation.goBack();
               }}
               title="Back"
@@ -26,9 +27,7 @@ export default function Historyscore({navigation}) {
         let arr = [];
         // await AsyncStorage.removeItem("DATA")
         const getData = await AsyncStorage.getItem('DATA');
-        console.log("databe", getData)
         if(getData !== null){ 
-          console.log(getData, "cfsdds")
             arr = JSON.parse(getData);
             setDatalocal(arr)
         }else{
@@ -45,7 +44,7 @@ export default function Historyscore({navigation}) {
         {
             dataLocal?.length > 0 ?
             <ScrollView>
-                <View style={{flex:1, flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
+                <View style={{flex:1, flexDirection:'column', justifyContent:'flex-start', alignItems:'center', paddingBottom:10}}>
                     {dataLocal.map((value,index)=>{
                         return(
                             <View  key={index}

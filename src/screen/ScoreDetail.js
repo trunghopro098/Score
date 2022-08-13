@@ -62,9 +62,7 @@ export default function ScoreDetail({route,navigation}) {
     let arr = [];
     // await AsyncStorage.removeItem("DATA")
     const getData = await AsyncStorage.getItem('DATA');
-    console.log("databe", getData)
     if(getData !== null){ 
-      console.log(getData, "cfsdds")
         arr = JSON.parse(getData);
         setDatalocal(arr)
     }else{
@@ -82,7 +80,7 @@ export default function ScoreDetail({route,navigation}) {
         />
       ),
       headerRight:() => (<>
-       {listName.length > 0 &&  <Button
+       {listName.length ==4 &&  <Button
         onPress={() => {
           setshowAddScore(true)
         }}
@@ -116,16 +114,25 @@ export default function ScoreDetail({route,navigation}) {
     const addScore = () =>{
       
     }
-
+    const check = (number)=>{
+      if(!/^[0-9]+$/.test(number)){
+        return false
+      }else{
+        return true
+      }
+    }
     const handelAdd = ()=>{
+      if( (check(score1) && check(score2) && check(score3) && check(score4)) && ((score1 > 0) || (score2 > 0) || (score3 > 0) || (score4 > 0))){
         setListScore([...listScore, {score1,score2,score3,score4}])
         setscore1(0)
         setscore2(0)
         setscore3(0)
         setscore4(0)
-        // setListScore([])
-        console.log(listScore)
         setshowAddScore(false)
+        // setListScore([])
+      }else{
+       alert("Scores must be a number and there must be at least one player with a scores greater than 0 !!!")
+      }
     }
 
     const handelFinish = async()=>{
@@ -162,13 +169,16 @@ export default function ScoreDetail({route,navigation}) {
          }
         if(dataLocal.length > 0){
           dataSet = dataLocal.concat([obj]);
-          console.log(dataSet)
         }else{
           dataSet = [obj];
         }
-        console.log("ssss", dataSet)
        await AsyncStorage.setItem("DATA", JSON.stringify(dataSet)) 
-       const win = (s1 > s2 > s3 > s4)? {"tt": s1,"name":name1}: (s2 > s3 > s4)?{"tt": s2,"name":name2}: (s3 > s4)?{"tt": s3,"name":name3}: {"tt": s4,"name":name4}
+      
+       const win = (s1 > s2 && s1 > s3 && s1 > s4) ?
+        {"tt": s1,"name":name1}: (s2 > s3 && s2 > s4 && s2> s1)?
+        {"tt": s2,"name":name2}: (s3 > s4 && s3 > s1 && s3 > s2)?
+        {"tt": s3,"name":name3}:{"tt": s4,"name":name4}
+
        alert(`Congratulations ${win.name} on your win witch scores ${win.tt}`)
        navigation.goBack()
     }
@@ -229,7 +239,7 @@ export default function ScoreDetail({route,navigation}) {
           }
      {showAddScore ?
      <View style={styles.addScore}>
-      <Text style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>Add Score</Text>
+      <Text style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>Add Scores</Text>
       <View style={{flexDirection:'row', justifyContent:'space-around', width:'100%'}}>
             <View style={{flexDirection:'column', alignItems:'center'}}>
               <Text  style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>{listName[1].name}</Text>
@@ -324,22 +334,25 @@ export default function ScoreDetail({route,navigation}) {
       >
         <Text>ADD</Text>
       </TouchableOpacity>
-      <TouchableOpacity 
-      style={{
-        marginTop : 20,
-        borderWidth: 1, 
-        borderColor:'red',
-         width: 60, 
-         height: 35, 
-         borderRadius:5, 
-         alignItems:'center', 
-         justifyContent:'center'}}
-      onPress={()=>{
-        handelFinish()
-      }}
-      >
-        <Text>FINISH</Text>
-      </TouchableOpacity>
+      {listScore.length > 0 && 
+        <TouchableOpacity 
+        style={{
+          marginTop : 20,
+          borderWidth: 1, 
+          borderColor:'red',
+          width: 60, 
+          height: 35, 
+          borderRadius:5, 
+          alignItems:'center', 
+          justifyContent:'center'}}
+        onPress={()=>{
+          handelFinish()
+        }}
+        >
+          <Text>FINISH</Text>
+        </TouchableOpacity>
+      }
+
       </View>
     </View>:null
      }
