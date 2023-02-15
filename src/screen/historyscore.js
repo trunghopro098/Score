@@ -4,24 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Historyscore({navigation}) {
     const [dataLocal, setDatalocal] = useState([])
 
-    useEffect(()=>{
-        navigation.setOptions({
-          headerLeft: () => (
-            <Button
-              onPress={() => {
-
-                navigation.goBack();
-              }}
-              title="Back"
-            />
-          ),
-          headerRight:null
-        });
-      })
-
       useEffect(() => {
         getData()
-    
       }, [])
       const getData = async()=>{
         let arr = [];

@@ -71,14 +71,6 @@ export default function ScoreDetail({route,navigation}) {
   }
   useEffect(()=>{
     navigation.setOptions({
-      headerLeft: () => (
-        <Button
-          onPress={() => {
-            navigation.goBack();
-          }}
-          title="Back"
-        />
-      ),
       headerRight:() => (<>
        {listName.length ==4 &&  <Button
         onPress={() => {
@@ -242,7 +234,7 @@ export default function ScoreDetail({route,navigation}) {
       <Text style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>Add Scores</Text>
       <View style={{flexDirection:'row', justifyContent:'space-around', width:'100%'}}>
             <View style={{flexDirection:'column', alignItems:'center'}}>
-              <Text  style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>{listName[1].name}</Text>
+              <Text  style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>{listName[0].name}</Text>
               <TextInput
                 style={{
                   width: "100%",
@@ -261,7 +253,7 @@ export default function ScoreDetail({route,navigation}) {
             </View>
             {/*  */}
             <View style={{flexDirection:'column', alignItems:'center'}}>
-              <Text  style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>{listName[2].name}</Text>
+              <Text  style={{textAlign:'center', fontWeight:'bold', fontSize: 16,marginTop: 10}}>{listName[1].name}</Text>
               <TextInput
                 style={{
                   width: "100%",
